@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="upload-card">
+    <h2>Upload dataset (CSV)</h2>
+    <p>Make sure your CSV has a target/label column named one of: <strong>label, target, class, is_bot, bot</strong> —
+        otherwise the app tries the last column.</p>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv" required />
+        <button class="btn" type="submit">Upload & Run</button>
+    </form>
+</div>
+{% endblock %}

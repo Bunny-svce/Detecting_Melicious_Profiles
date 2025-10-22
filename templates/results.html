@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="results-card">
+    <h2>Results</h2>
+    <div class="metrics">
+        <div><strong>Accuracy:</strong> {{ metrics['accuracy']|round(3) }}</div>
+        <div><strong>Precision:</strong> {{ metrics['precision']|round(3) }}</div>
+        <div><strong>Recall:</strong> {{ metrics['recall']|round(3) }}</div>
+        <div><strong>F1-score:</strong> {{ metrics['f1']|round(3) }}</div>
+        <div><strong>AUC:</strong> {{ (metrics['auc'] is not none) and (metrics['auc']|round(3)) or 'N/A' }}</div>
+    </div>
+
+    <div class="charts">
+        <div class="chart-block">
+            <h3>Confusion Matrix</h3>
+            <img src="{{ url_for('static_images', filename=cm_img) }}" alt="confusion matrix" />
+        </div>
+        {% if roc_img %}
+        <div class="chart-block">
+            <h3>ROC Curve</h3>
+            <img src="{{ url_for('static_images', filename=roc_img) }}" alt="ROC Curve" />
+        </div>
+        {% endif %}
+        <div class="chart-block">
+            <h3>Prediction Distribution</h3>
+            <img src="{{ url_for('static_images', filename=pie_img) }}" alt="Prediction Pie" />
+        </div>
+    </div>
+
+    <a class="btn" href="{{ url_for('upload_csv') }}">Run another CSV</a>
+</div>
+{% endblock %}

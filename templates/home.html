@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <div class="hero-left">
+        <h2>Professional detector web app</h2>
+        <p>Upload a CSV (features + label). The app will preprocess, train a model, and show ROC, confusion matrix and
+            prediction pie chart automatically.</p>
+        <a class="btn" href="{{ url_for('upload_csv') }}">Upload CSV</a>
+    </div>
+    <div class="hero-right">
+        <div class="card animate-card">
+            <h3>Quick features</h3>
+            <ul>
+                <li>Auto-detects target column (label/target/class/is_bot).</li>
+                <li>Preprocessing: log transform, normalization, median-fill (paper-style).
+                    :contentReference[oaicite:5]{index=5}</li>
+                <li>Produces Confusion Matrix, ROC, Prediction Pie Chart automatically.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}
